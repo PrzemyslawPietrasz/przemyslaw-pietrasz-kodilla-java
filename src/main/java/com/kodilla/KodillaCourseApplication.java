@@ -10,4 +10,6 @@ public class KodillaCourseApplication {
         SpringApplication.run(KodillaCourseApplication.class, args);
     }
 
+
+
 }
