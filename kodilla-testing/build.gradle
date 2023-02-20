@@ -7,6 +7,9 @@ version '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.1.1'
+
 }
 
 dependencies {
