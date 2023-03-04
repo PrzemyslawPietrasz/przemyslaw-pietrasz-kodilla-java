@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-public class WorldTestSuite1 {
+public class WorldTestSuite {
 
     @Test
     public void testGetPeopleQuantity(){
@@ -47,7 +47,7 @@ public class WorldTestSuite1 {
 
         BigDecimal totalPeople = world.getPeopleQuantity();
         //Then
-        BigDecimal totalPeopleExpected = new BigDecimal("9000009");
+        BigDecimal totalPeopleExpected = new BigDecimal("9000000");
         Assert.assertEquals(totalPeopleExpected, totalPeople);
     }
 }
