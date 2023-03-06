@@ -3,4 +3,5 @@ include 'kodilla-testing'
 include 'kodilla-testing:com.kodilla.stream'
 findProject(':kodilla-testing:com.kodilla.stream')?.name = 'com.kodilla.stream'
 include 'kodilla-stream'
+include 'kodilla-exception'
 
