@@ -54,7 +54,7 @@ public class WeatherForecast {
             resultMap.put(temperature.getKey(), temperature.getValue()); // [1]
         }
 
-        LinkedHashMap<String, Double> sortedMap = new LinkedHashMap<>();
+        ArrayList<Double> sortedArray = new ArrayList<>();
         ArrayList<Double> list = new ArrayList<>();
 
         for (Entry<String, Double> entry : resultMap.entrySet()) {
@@ -64,15 +64,15 @@ public class WeatherForecast {
         for (double num : list) {
             for (Entry<String, Double> entry : resultMap.entrySet()) {
                 if (entry.getValue().equals(num)) {
-                    sortedMap.put(entry.getKey(), num);
+                    sortedArray.add(num);
                 }
             }
         }
 
-        if (sortedMap.size() % 2 == 0) {
-            median = sortedMap.get((sortedMap.size() - 1) / 2);
+        if (sortedArray.size() % 2 == 0) {
+            median = sortedArray.get((sortedArray.size() - 1) / 2);
         } else {
-            median = (sortedMap.get((sortedMap.size() - 1) / 2) + sortedMap.get(sortedMap.size() / 2)) / 2;
+            median = (sortedArray.get((sortedArray.size() - 1) / 2) + sortedArray.get(sortedArray.size() / 2)) / 2;
         }
 
         return median;
