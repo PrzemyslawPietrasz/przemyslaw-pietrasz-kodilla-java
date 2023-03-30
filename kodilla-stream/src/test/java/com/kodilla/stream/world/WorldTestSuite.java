@@ -1,7 +1,7 @@
 package com.kodilla.stream.world;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
@@ -48,6 +48,6 @@ public class WorldTestSuite {
         BigDecimal totalPeople = world.getPeopleQuantity();
         //Then
         BigDecimal totalPeopleExpected = new BigDecimal("9000000");
-        Assert.assertEquals(totalPeopleExpected, totalPeople);
+        Assertions.assertEquals(totalPeopleExpected, totalPeople);
     }
 }

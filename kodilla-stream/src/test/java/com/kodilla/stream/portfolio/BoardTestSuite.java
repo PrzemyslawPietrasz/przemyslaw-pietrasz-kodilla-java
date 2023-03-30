@@ -1,6 +1,7 @@
 package com.kodilla.stream.portfolio;
 
-import org.junit.Assert;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -155,7 +156,7 @@ class BoardTestSuite {
                 .getAsDouble();
 
         //Then
-        Assert.assertEquals(10.0, average, 0.0001);
-        Assert.assertEquals(10.0, avg, 0.0001);
+        Assertions.assertEquals(10.0, average, 0.0001);
+        Assertions.assertEquals(10.0, avg, 0.0001);
     }
 }
