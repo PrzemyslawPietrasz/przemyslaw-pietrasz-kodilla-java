@@ -57,12 +57,9 @@ class DbManagerTestSuite {
             String sqlQuery = """
                                                     SELECT FIRSTNAME, LASTNAME
                                                     FROM USERS
-                                                    WHERE ID IN (
-                                                        SELECT USER_ID
-                                                        FROM POSTS
-                                                        GROUP BY USER_ID
-                                                        HAVING COUNT(*) >= 2
-                                                    );""";
+                                                    JOIN POSTS P on USERS.ID = P.USER_ID
+                                                    GROUP BY USER_ID
+                                                    HAVING COUNT(*) >= 2""";
             Statement statement = dbManager.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sqlQuery);
 
