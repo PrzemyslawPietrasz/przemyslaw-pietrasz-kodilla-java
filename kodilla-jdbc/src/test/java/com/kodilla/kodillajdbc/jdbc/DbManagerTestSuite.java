@@ -59,7 +59,7 @@ class DbManagerTestSuite {
                                                     FROM USERS
                                                     JOIN POSTS P on USERS.ID = P.USER_ID
                                                     GROUP BY USER_ID
-                                                    HAVING COUNT(*) >= 2""";
+                                                    HAVING COUNT(*) > 1""";
             Statement statement = dbManager.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sqlQuery);
 
