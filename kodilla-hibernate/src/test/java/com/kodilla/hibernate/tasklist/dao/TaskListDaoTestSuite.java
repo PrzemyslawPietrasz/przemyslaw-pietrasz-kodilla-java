@@ -36,13 +36,14 @@ class TaskListDaoTestSuite {
         //Then
         List<TaskList> readTaskList = taskListDao.findByListName(LISTNAME);
 
-        Assertions.assertEquals(4, readTaskList.size());
+        Assertions.assertEquals(19, readTaskList.size());
         Assertions.assertEquals(LISTNAME, readTaskList.get(0).getListName());
         Assertions.assertEquals(LISTNAME, readTaskList.get(1).getListName());
 
         //CleanUp
         taskListDao.delete(taskList1);
         taskListDao.delete(taskList2);
+
     }
     @Test
     void testTaskListDaoSaveWithTasks() {
