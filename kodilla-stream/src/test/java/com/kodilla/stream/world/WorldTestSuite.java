@@ -50,4 +50,32 @@ public class WorldTestSuite {
         BigDecimal totalPeopleExpected = new BigDecimal("9000009");
         Assertions.assertEquals(totalPeopleExpected, totalPeople);
     }
+
+
+    @Test
+    public void testGetPeopleQuantityWithNoContinents() {
+        //Given
+        World world = new World();
+        // When
+        BigDecimal totalPopulation = world.getPeopleQuantity();
+
+        // Then
+        BigDecimal expectedPopulation = BigDecimal.ZERO;
+        Assertions.assertEquals(expectedPopulation, totalPopulation);
+    }
+
+    @Test
+    public void testGetPeopleQuantityWithNoCountries() {
+        // Given
+        World world = new World();
+        Continent europe = new Continent("Europa");
+        world.addContinent(europe);
+
+        // When
+        BigDecimal totalPopulation = world.getPeopleQuantity();
+
+        // Then
+        BigDecimal expectedPopulation = BigDecimal.ZERO;
+        Assertions.assertEquals(expectedPopulation, totalPopulation);
+    }
 }
