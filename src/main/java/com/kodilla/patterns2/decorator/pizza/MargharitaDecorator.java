@@ -2,8 +2,8 @@ package com.kodilla.patterns2.decorator.pizza;
 
 import java.math.BigDecimal;
 
-public class CalzoneDecorator extends AbstractPizzaOrderDecorator {
-    protected CalzoneDecorator(PizzaOrder pizzaOrder) {
+public class MargharitaDecorator extends AbstractPizzaOrderDecorator {
+    protected MargharitaDecorator(PizzaOrder pizzaOrder) {
         super(pizzaOrder);
     }
 
@@ -14,6 +14,6 @@ public class CalzoneDecorator extends AbstractPizzaOrderDecorator {
 
     @Override
     public String getDescription() {
-        return super.getDescription() + " calzone";
+        return super.getDescription() + " margharita";
     }
 }
