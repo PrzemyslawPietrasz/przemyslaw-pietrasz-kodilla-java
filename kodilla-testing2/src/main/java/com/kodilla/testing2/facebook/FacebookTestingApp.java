@@ -14,6 +14,8 @@ public class FacebookTestingApp {
 
     public static final String XPATH_WAITFOR = "//select[1]";
     public static final String XPATH_SELECT = "//div[contains(@class, \"_5k_5\")]/span/span";
+
+    public static final String XPATH_SELECTOR = "/html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/div/div[1]/form/div[5]/a";
     public static final String XPATH_SELECT_DAY = XPATH_SELECT + "/select[1]";
     public static final String XPATH_SELECT_MONTH = XPATH_SELECT + "/select[2]";
     public static final String XPATH_SELECT_YEAR = XPATH_SELECT + "/select[3]";
@@ -31,7 +33,7 @@ public class FacebookTestingApp {
             cookieButton.click();
         }
 
-        WebElement createAccountButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/div/div[1]/form/div[5]/a")));
+        WebElement createAccountButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(XPATH_SELECTOR)));
         if (createAccountButton.isDisplayed()) {
             createAccountButton.click();
         }

@@ -24,6 +24,9 @@ public class CrudAppTestSuite {
     private Random generator;
 
 
+
+
+
     @BeforeEach
     public void initTests() {
         driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
@@ -88,13 +91,17 @@ public class CrudAppTestSuite {
 
         while (!driver.findElement(By.xpath("//select[1]")).isDisplayed()) ;
 
-        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+        final String XPATH_FORMS = "//form[@class=\"datatable__row\"]";
+        final String XPATH_TASK_VALUE = ".//p[@class=\"datatable__field-value\"]";
+        final String XPATH_DELETE_CARD_BUTTON = ".//button[@data-task-delete-button]";
+
+        driver.findElements(By.xpath(XPATH_FORMS)).stream()
                 .filter(anyForm ->
-                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                        anyForm.findElement(By.xpath(XPATH_TASK_VALUE))
                                 .getText().equals(taskName))
                 .forEach(theForm -> {
                     WebElement buttonDeleteCard =
-                            theForm.findElement(By.xpath(".//button[@data-task-delete-button]"));
+                            theForm.findElement(By.xpath(XPATH_DELETE_CARD_BUTTON));
                     buttonDeleteCard.click();
                 });
         Thread.sleep(5000);
@@ -112,19 +119,21 @@ public class CrudAppTestSuite {
 
         Thread.sleep(2000);
 
-        driverTrello.findElements(By.xpath("//a[@class=\"board-tile\"]")).stream()
-                .filter(aHref -> aHref.findElements(By.xpath(".//span[@title=\"Kodilla Application\"]"))
+        final String XPATH_BOARD_TILE = "//a[@class=\"board-tile\"]";
+        final String XPATH_BOARD_TITLE = ".//span[@title=\"Kodilla Application\"]";
+        final String XPATH_LIST_CARD_TITLE = "//span[@class=\"list-card-title js-card-name\"]";
+
+        driverTrello.findElements(By.xpath(XPATH_BOARD_TILE)).stream()
+                .filter(aHref -> aHref.findElements(By.xpath(XPATH_BOARD_TITLE))
                         .size() > 0)
                 .forEach(aHref -> aHref.click());
 
         Thread.sleep(2000);
 
-
         final WebDriverWait webDriverWait = new WebDriverWait(driverTrello, Duration.ofSeconds(10));
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span")));
 
-
-        result = driverTrello.findElements(By.xpath("//span[@class=\"list-card-title js-card-name\"]")).stream()
+        result = driverTrello.findElements(By.xpath(XPATH_LIST_CARD_TITLE)).stream()
                 .filter(theSpan -> theSpan.getText().contains(taskName))
                 .collect(Collectors.toList())
                 .size() > 0;
